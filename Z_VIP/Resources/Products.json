@@ -1,0 +1,191 @@
+[
+ {
+ "id": "1",
+ "name": "Adidas Originals Superstar Shoes",
+ "price": "699.00",
+ "brand": "adidas",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/adidas-8380-5900574-1.jpg"
+ },
+ {
+ "id": "2",
+ "name": "Adair Strappy Sneakers",
+ "price": "399.00",
+ "brand": "addicts anonymous",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/addicts-anonymous-8514-7761874-1.jpg"
+ },
+ {
+ "id": "3",
+ "name": "Adidas Originals Superstar Shoes",
+ "price": "659.00",
+ "brand": "adidas",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/adidas-8263-6700574-1.jpg"
+ },
+ {
+ "id": "4",
+ "name": "Lace Up Heel Pumps",
+ "price": "279.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-6199-8480074-1.jpg",
+ },
+ {
+ "id": "5",
+ "name": "Laced-Up Sneakers",
+ "price": "249.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-1732-7926774-1.jpg"
+ },
+ {
+ "id": "6",
+ "name": "McAllister Oxford Shoes",
+ "price": "889.00",
+ "brand": "Kings Collection",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/kings-collection-9482-6470754-1.jpg"
+ },
+ {
+ "id": "7",
+ "name": "Petite Pink Lace Pencil Dress",
+ "price": "666.00",
+ "brand": "Dorothy Perkins",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/dorothy-perkins-5744-2421774-1.jpg"
+ },
+ {
+ "id": "8",
+ "name": "Collection Tailored Wrap Front Pants",
+ "price": "249.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-2369-9607274-1.jpg"
+ },
+ {
+ "id": "9",
+ "name": "Shawl Collar Cardigan",
+ "price": "279.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-5787-7338574-1.jpg"
+ },
+ {
+ "id": "10",
+ "name": "Strapless Cascading Peplum Maxi Dress",
+ "price": "549.00",
+ "brand": "Preen & Proper",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/preen-proper-1789-5233774-1.jpg"
+ },
+ {
+ "id": "11",
+ "name": "One Shoulder Cape Jumpsuit",
+ "price": "689.00",
+ "brand": "Miss Selfridge",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/miss-selfridge-4519-6936674-1.jpg"
+ },
+ {
+ "id": "12",
+ "name": "Print Logo Hoodie",
+ "price": "370.00",
+ "brand": "Hollister",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/hollister-4168-3982874-1.jpg"
+ },
+ {
+ "id": "13",
+ "name": "Denim Stitch Long Sleeve Shirt",
+ "price": "179.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-2449-4320574-1.jpg"
+ },
+ {
+ "id": "14",
+ "name": "Essential Fit And Flare Dress",
+ "price": "179.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-6530-4817064-1.jpg"
+ },
+ {
+ "id": "15",
+ "name": "Scallop Lace Spaghetti Strap Midi Dress",
+ "price": "399.00",
+ "brand": "Les Premieres",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/les-premieres-2454-6815674-1.jpg"
+ },
+ {
+ "id": "16",
+ "name": "Bridesmaid Off Shoulder Maxi Dress with Ruffle",
+ "price": "499.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-9085-3545474-1.jpg"
+ },
+ {
+ "id": "17",
+ "name": "Anita Long Boots",
+ "price": "469.00",
+ "brand": "Public Desire",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/public-desire-3891-3436774-1.jpg"
+ },
+ {
+ "id": "18",
+ "name": "Surplus Goods Flip Flops",
+ "price": "229.00",
+ "brand": "Superdry",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/superdry-7864-3099774-1.jpg"
+ },
+ {
+ "id": "19",
+ "name": "Classic Faux Leather Business Dress Shoes",
+ "price": "379.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-6393-7243574-1.jpg"
+ },
+ {
+ "id": "20",
+ "name": "Laced-Up Sneakers",
+ "price": "249.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-1973-3926774-1.jpg"
+ },
+ {
+ "id": "21",
+ "name": "Color Block Shift Dress",
+ "price": "229.00",
+ "brand": "Shopsfashion",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/shopsfashion-7452-0008474-1.jpg"
+ },
+ {
+ "id": "22",
+ "name": "Masculine Structured Coat",
+ "price": "659.00",
+ "brand": "Mango",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/mango-2736-3930874-1.jpg"
+ },
+ {
+ "id": "23",
+ "name": "Wide Leg Design Solid Pants",
+ "price": "498.00",
+ "brand": "Jazzy Daisy",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/jazzy-daisy-7292-1450564-1.jpg"
+ },
+ {
+ "id": "24",
+ "name": "Collection Tuck Detail Flared Dress",
+ "price": "229.00",
+ "brand": "ZALORA",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/zalora-2173-1995774-1.jpg"
+ },
+ {
+ "id": "25",
+ "name": "Long Sleeve Frill Detail Dress",
+ "price": "709.00",
+ "brand": "CLOSET",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/closet-1060-4633574-1.jpg"
+ },
+ {
+ "id": "26",
+ "name": "Haco Knitted Zipped Cardigan",
+ "price": "509.00",
+ "brand": "!Solid",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/solid-1309-2023574-1.jpg"
+ },
+ {
+ "id": "27",
+ "name": "Navy Marl Skinny Suit Jacket",
+ "price": "1229.00",
+ "brand": "Topman",
+ "mainImageUrl": "https://static-catalog.staging.hk.zalora.net/p/topman-0389-4704574-1.jpg"
+ }
+ ]
