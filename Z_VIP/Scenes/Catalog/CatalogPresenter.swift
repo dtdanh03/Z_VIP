@@ -12,14 +12,12 @@
 
 import UIKit
 
-protocol CatalogPresentationLogic
-{
+protocol CatalogPresentationLogic {
     func present(products: Catalog.Products.Response)
     func present(error message: Catalog.Error.Response)
 }
 
-class CatalogPresenter: CatalogPresentationLogic
-{
+class CatalogPresenter: CatalogPresentationLogic {
     weak var viewController: CatalogDisplayLogic?
     
     func present(products: Catalog.Products.Response) {

@@ -12,18 +12,15 @@
 
 import UIKit
 
-@objc protocol CatalogRoutingLogic
-{
+@objc protocol CatalogRoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol CatalogDataPassing
-{
+protocol CatalogDataPassing {
   var dataStore: CatalogDataStore? { get }
 }
 
-class CatalogRouter: NSObject, CatalogRoutingLogic, CatalogDataPassing
-{
+class CatalogRouter: NSObject, CatalogRoutingLogic, CatalogDataPassing {
   weak var viewController: CatalogViewController?
   var dataStore: CatalogDataStore?
   

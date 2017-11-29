@@ -22,8 +22,7 @@ protocol CatalogDataStore {
 }
 
 
-class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore
-{
+class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore{
     
     var presenter: CatalogPresentationLogic?
     var worker: CatalogWorker?

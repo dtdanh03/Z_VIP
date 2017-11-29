@@ -12,12 +12,10 @@
 
 import UIKit
 
-enum Catalog
-{
+enum Catalog {
   // MARK: Use cases
   
-  enum Products
-  {
+  enum Products {
     struct Request {}
     struct Response {
         var products: [Product]
@@ -31,8 +29,7 @@ enum Catalog
     }
   }
     
-    enum Error
-    {
+    enum Error {
         struct Request {}
         struct Response {
             var errorMessage: String
