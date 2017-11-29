@@ -14,7 +14,7 @@ import UIKit
 
 protocol CatalogPresentationLogic
 {
-    func reloadProducts()
+    func present(products: Catalog.Products.Response)
     func present(error message: Catalog.Error.Response)
 }
 
@@ -22,8 +22,9 @@ class CatalogPresenter: CatalogPresentationLogic
 {
     weak var viewController: CatalogDisplayLogic?
     
-    func reloadProducts() {
-        viewController?.reloadProducts()
+    func present(products: Catalog.Products.Response) {
+        let displayedProducts = products.products.map { Catalog.Products.ViewModel.DisplayedProduct(name: $0.name, mainImageUrl: $0.mainImageUrl) }
+        viewController?.display(products: Catalog.Products.ViewModel(displayedProducts: displayedProducts))
     }
     
     func present(error message: Catalog.Error.Response) {

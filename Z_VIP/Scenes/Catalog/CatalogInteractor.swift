@@ -37,7 +37,7 @@ class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore
             switch result {
             case .success(let products):
                 strongSelf.products = products
-                strongSelf.presenter?.reloadProducts()
+                strongSelf.presenter?.present(products: Catalog.Products.Response(products: products))
             case .failure(let message):
                 strongSelf.presenter?.present(error: Catalog.Error.Response(errorMessage: message))
             }

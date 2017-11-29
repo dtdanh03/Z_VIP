@@ -14,13 +14,15 @@ import UIKit
 import Kingfisher
 
 protocol CatalogDisplayLogic: class {
-    func reloadProducts()
+    func display(products: Catalog.Products.ViewModel)
     func display(error message: Catalog.Error.ViewModel)
 }
 
 class CatalogViewController: UIViewController, CatalogDisplayLogic {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var products: [Catalog.Products.ViewModel.DisplayedProduct] = []
     
     var interactor: CatalogBusinessLogic?
     var router: (NSObjectProtocol & CatalogRoutingLogic & CatalogDataPassing)?
@@ -73,8 +75,9 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
         interactor?.fetchProducts()
     }
     
-    func reloadProducts() {
-        self.collectionView.reloadData()
+    func display(products: Catalog.Products.ViewModel) {
+        self.products = products.displayedProducts
+        collectionView.reloadData()
     }
     
     func display(error message: Catalog.Error.ViewModel) {
@@ -88,16 +91,16 @@ extension CatalogViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return interactor?.products.count ?? 0
+        return products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let product = interactor?.products[indexPath.item]
-        cell.productImageView.kf.setImage(with: URL(string: product?.mainImageUrl ?? ""))
-        cell.productNameLabel.text = product?.name
+        let product = products[indexPath.item]
+        cell.productImageView.kf.setImage(with: URL(string: product.mainImageUrl))
+        cell.productNameLabel.text = product.name
         return cell
     }
 }

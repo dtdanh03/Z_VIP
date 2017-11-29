@@ -23,7 +23,11 @@ enum Catalog
         var products: [Product]
     }
     struct ViewModel {
-        var products: [Product]
+        struct DisplayedProduct {
+            var name: String
+            var mainImageUrl: String
+        }
+        var displayedProducts: [DisplayedProduct]
     }
   }
     
