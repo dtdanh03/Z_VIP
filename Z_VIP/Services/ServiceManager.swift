@@ -16,28 +16,47 @@ enum Result<T> {
 class ServiceManager {
     
     //All services
-    static let offline = OfflineService()
+    static let product = ProductService()
     
 }
 
-class OfflineService {
+class ProductService {
+    
+    fileprivate func loadJson(forResource name: String, ofType type: String) -> JSON? {
+        guard let path = Bundle.main.path(forResource: name, ofType: type),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+            let json = try? JSON(data: data) else {
+                return nil
+        }
+        return json
+    }
+    
     func loadProducts(_ callback: @escaping (Result<Product>)->Void) {
-        guard let path = Bundle.main.path(forResource: "Products", ofType: "json") else {
-            callback(Result.failure("Cannot load products"))
+        guard let json = loadJson(forResource: "Products", ofType: "json") else {
+            callback(Result.failure("Cannot load resource"))
             return
         }
         
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else {
-            callback(Result.failure("Cannot read contents of file"))
-            return
-        }
-        
-        let json = try? JSON(data: data)
-        guard let products = json?.array?.flatMap({ json in return Product(json: json) })  else {
+        guard let products = json.array?.flatMap({ json in return Product(json: json) })  else {
             callback(Result.failure("Cannot parse Json"))
             return
         }
         
         callback(Result.success(products))
     }
+    
+    func loadProductImage(_ callback: @escaping (Result<String>)->Void) {
+        guard let json = loadJson(forResource: "ImageList", ofType: "json") else {
+            callback(Result.failure("Cannot load resource"))
+            return
+        }
+        
+        guard let imageList = json.array?.flatMap({ json in return json.string })  else {
+            callback(Result.failure("Cannot parse Json"))
+            return
+        }
+        
+        callback(Result.success(imageList))
+    }
+    
 }

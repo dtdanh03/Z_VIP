@@ -14,7 +14,7 @@ import UIKit
 
 class CatalogWorker {
     func fetchProduct(_ callback: @escaping (Result<Product>)->Void) {
-        ServiceManager.offline.loadProducts { (result) in
+        ServiceManager.product.loadProducts { (result) in
             callback(result)
         }
     }

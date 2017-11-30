@@ -1,5 +1,5 @@
 //
-//  CatalogViewController.swift
+//  ProductDetailViewController.swift
 //  Z_VIP
 //
 //  Created by Danh Dang on 11/29/17.
@@ -11,20 +11,21 @@
 //
 
 import UIKit
-import Kingfisher
 
-protocol CatalogDisplayLogic: class {
-    func display(viewModel: Catalog.ViewModel)
-    func display(error: Error)
+protocol ProductDetailDisplayLogic: class {
+    func display(productDetail product: ProductDetail.ViewModel)
 }
 
-class CatalogViewController: UIViewController, CatalogDisplayLogic {
+class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
+    
+    var interactor: ProductDetailBusinessLogic?
+    var router: (NSObjectProtocol & ProductDetailRoutingLogic & ProductDetailDataPassing)?
+    var product = ProductDetail.ViewModel.init(product: ProductDetail.ViewModel.DisplayProduct(), imageList: [])
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var viewModel: Catalog.ViewModel = Catalog.ViewModel(displayedProducts: [])
-    var interactor: CatalogBusinessLogic?
-    var router: (NSObjectProtocol & CatalogRoutingLogic & CatalogDataPassing)?
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var brandLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,11 +40,11 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
     
     // MARK: Setup
     
-    func setup() {
+    private func setup() {
         let viewController = self
-        let interactor = CatalogInteractor()
-        let presenter = CatalogPresenter()
-        let router = CatalogRouter()
+        let interactor = ProductDetailInteractor()
+        let presenter = ProductDetailPresenter()
+        let router = ProductDetailRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -56,11 +57,11 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
-        interactor?.fetchProducts()
+        setupUI()
+        interactor?.fetchImageList(for: ProductDetail.Request(product: router?.dataStore?.product ?? Product()))
     }
     
-    func setupCollectionView() {
+    func setupUI() {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumLineSpacing = 0
@@ -70,45 +71,45 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
         collectionView.delegate = self
     }
     
-    func display(viewModel: Catalog.ViewModel) {
-        self.viewModel = viewModel
-        collectionView.reloadData()
+    func display(productDetail product: ProductDetail.ViewModel) {
+        self.product = product
+        reloadUI()
     }
     
-    func display(error: Error) {
-        print(error.message)
+    func reloadUI() {
+        navigationItem.title = product.product.name
+        collectionView.reloadData()
+        nameLabel.text = product.product.name
+        brandLabel.text = product.product.brand
+        priceLabel.text = product.product.price
     }
 }
 
-extension CatalogViewController: UICollectionViewDataSource {
+extension ProductDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.displayedProducts.count
+        return product.imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let product = viewModel.displayedProducts[indexPath.item]
-        cell.productImageView.kf.setImage(with: URL(string: product.mainImageUrl))
-        cell.productNameLabel.text = product.name
+        let urlString = product.imageList[indexPath.item]
+        cell.imageView.kf.setImage(with: URL(string: urlString))
         return cell
     }
 }
 
-extension CatalogViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.routeToProductDetail(productAt: indexPath.item)
-    }
+extension ProductDetailViewController: UICollectionViewDelegate {
+    
 }
 
-extension CatalogViewController: UICollectionViewDelegateFlowLayout {
+extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size =  Int((collectionView.frame.width) / 2)
-        return CGSize(width: size, height: size)
+        return collectionView.frame.size
     }
 }

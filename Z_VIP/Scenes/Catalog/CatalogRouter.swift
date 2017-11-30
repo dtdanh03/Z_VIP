@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol CatalogRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToProductDetail(productAt index: Int)
 }
 
 protocol CatalogDataPassing {
@@ -23,35 +23,20 @@ protocol CatalogDataPassing {
 class CatalogRouter: NSObject, CatalogRoutingLogic, CatalogDataPassing {
   weak var viewController: CatalogViewController?
   var dataStore: CatalogDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: CatalogViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: CatalogDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    
+    func routeToProductDetail(productAt index: Int) {
+        guard let dataStore = dataStore,
+            index < dataStore.products.count else {
+                return
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let productDetailVC = storyboard.instantiateViewController(withIdentifier : "ProductDetailViewController") as? ProductDetailViewController else {
+            return
+        }
+        
+        let product = dataStore.products[index]
+        productDetailVC.router?.dataStore?.product = product
+        viewController?.navigationController?.pushViewController(productDetailVC, animated: true)
+    }
 }

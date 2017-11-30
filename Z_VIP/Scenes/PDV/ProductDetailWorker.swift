@@ -1,5 +1,5 @@
 //
-//  CatalogModels.swift
+//  ProductDetailWorker.swift
 //  Z_VIP
 //
 //  Created by Danh Dang on 11/29/17.
@@ -12,16 +12,10 @@
 
 import UIKit
 
-enum Catalog {
-    struct Request {}
-    struct Response {
-        var products: [Product]
-    }
-    struct ViewModel {
-        struct DisplayedProduct {
-            var name: String
-            var mainImageUrl: String
+class ProductDetailWorker {
+    func fetchImageList(for product: Product, _ callback: @escaping (Result<String>)->Void) {
+        ServiceManager.product.loadProductImage { (result) in
+            callback(result)
         }
-        var displayedProducts: [DisplayedProduct]
     }
 }

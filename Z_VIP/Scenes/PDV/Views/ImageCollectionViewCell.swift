@@ -1,5 +1,5 @@
 //
-//  ProductCollectionViewCell.swift
+//  ImageCollectionViewCell.swift
 //  Z_VIP
 //
 //  Created by Danh Dang on 11/29/17.
@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ProductCollectionViewCell: UICollectionViewCell {
+class ImageCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +19,4 @@ class ProductCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
 }

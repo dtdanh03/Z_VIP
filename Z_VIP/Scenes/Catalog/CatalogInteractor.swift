@@ -13,7 +13,6 @@
 import UIKit
 
 protocol CatalogBusinessLogic {
-    var products: [Product] { get }
     func fetchProducts()
 }
 
@@ -21,14 +20,12 @@ protocol CatalogDataStore {
     var products: [Product] { get }
 }
 
-
 class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore{
     
     var presenter: CatalogPresentationLogic?
     var worker: CatalogWorker?
-    
-    
     var products: [Product] = []
+    
     func fetchProducts() {
         worker = CatalogWorker()
         worker?.fetchProduct({ [weak self] (result) in
@@ -36,9 +33,9 @@ class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore{
             switch result {
             case .success(let products):
                 strongSelf.products = products
-                strongSelf.presenter?.present(products: Catalog.Products.Response(products: products))
+                strongSelf.presenter?.present(products: Catalog.Response(products: products))
             case .failure(let message):
-                strongSelf.presenter?.present(error: Catalog.Error.Response(errorMessage: message))
+                strongSelf.presenter?.present(error: Error(message: message))
             }
         })
     }

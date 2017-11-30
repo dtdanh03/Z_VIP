@@ -13,16 +13,23 @@ class Product {
     var id: String
     var name: String
     var mainImageUrl: String
-    var price: Double
+    var price: String
     var brand: String
+    
+    init() {
+        id = ""
+        name = ""
+        mainImageUrl = ""
+        price = ""
+        brand = ""
+    }
     
     init?(json: JSON) {
         guard json.error == nil else { return nil }
         id = json["id"].string ?? ""
         name = json["name"].string ?? ""
         mainImageUrl = json["mainImageUrl"].string ?? ""
-        price = json["name"].double ?? 0.0
+        price = json["price"].string ?? ""
         brand = json["brand"].string ?? ""
-
     }
 }

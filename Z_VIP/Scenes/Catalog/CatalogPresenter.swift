@@ -13,20 +13,19 @@
 import UIKit
 
 protocol CatalogPresentationLogic {
-    func present(products: Catalog.Products.Response)
-    func present(error message: Catalog.Error.Response)
+    func present(products: Catalog.Response)
+    func present(error: Error)
 }
 
 class CatalogPresenter: CatalogPresentationLogic {
     weak var viewController: CatalogDisplayLogic?
     
-    func present(products: Catalog.Products.Response) {
-        let displayedProducts = products.products.map { Catalog.Products.ViewModel.DisplayedProduct(name: $0.name, mainImageUrl: $0.mainImageUrl) }
-        viewController?.display(products: Catalog.Products.ViewModel(displayedProducts: displayedProducts))
+    func present(products: Catalog.Response) {
+        let displayedProducts = products.products.map { Catalog.ViewModel.DisplayedProduct(name: $0.name, mainImageUrl: $0.mainImageUrl) }
+        viewController?.display(viewModel: Catalog.ViewModel(displayedProducts: displayedProducts))
     }
     
-    func present(error message: Catalog.Error.Response) {
-        viewController?.display(error: Catalog.Error.ViewModel(errorMessage: message.errorMessage))
+    func present(error: Error) {
+        viewController?.display(error: error)
     }
-    
 }
