@@ -15,6 +15,11 @@
 		2D1C213C1FCFF2A500DCC262 /* ProductDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21361FCFF2A500DCC262 /* ProductDescriptionViewController.swift */; };
 		2D1C213D1FCFF2A500DCC262 /* ProductDescriptionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21371FCFF2A500DCC262 /* ProductDescriptionWorker.swift */; };
 		2D1C213F1FCFF33C00DCC262 /* ProductDescription.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1C213E1FCFF33C00DCC262 /* ProductDescription.json */; };
+		2D1C21471FD005AC00DCC262 /* Z_VIPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21461FD005AC00DCC262 /* Z_VIPTests.swift */; };
+		2D1C21531FD0066900DCC262 /* CatalogInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C214F1FD0066900DCC262 /* CatalogInteractorTests.swift */; };
+		2D1C21541FD0066900DCC262 /* CatalogPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21501FD0066900DCC262 /* CatalogPresenterTests.swift */; };
+		2D1C21551FD0066900DCC262 /* CatalogViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21511FD0066900DCC262 /* CatalogViewControllerTests.swift */; };
+		2D1C21561FD0066900DCC262 /* CatalogWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */; };
 		2D71D7221FCFC65F00CB548C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71D7211FCFC65F00CB548C /* Error.swift */; };
 		2D7AA4721FCE995900137EE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7AA4711FCE995900137EE5 /* AppDelegate.swift */; };
 		2D7AA4771FCE995900137EE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AA4751FCE995900137EE5 /* Main.storyboard */; };
@@ -41,6 +46,16 @@
 		2D7AA4B21FCF1CEF00137EE5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7AA4B11FCF1CEF00137EE5 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2D1C21491FD005AC00DCC262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7AA4661FCE995900137EE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D7AA46D1FCE995900137EE5;
+			remoteInfo = Z_VIP;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2D1C21321FCFF2A500DCC262 /* ProductDescriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionInteractor.swift; sourceTree = "<group>"; };
 		2D1C21331FCFF2A500DCC262 /* ProductDescriptionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionModels.swift; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 		2D1C21361FCFF2A500DCC262 /* ProductDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionViewController.swift; sourceTree = "<group>"; };
 		2D1C21371FCFF2A500DCC262 /* ProductDescriptionWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionWorker.swift; sourceTree = "<group>"; };
 		2D1C213E1FCFF33C00DCC262 /* ProductDescription.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductDescription.json; sourceTree = "<group>"; };
+		2D1C21441FD005AB00DCC262 /* Z_VIPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Z_VIPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1C21461FD005AC00DCC262 /* Z_VIPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Z_VIPTests.swift; sourceTree = "<group>"; };
+		2D1C21481FD005AC00DCC262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D1C214F1FD0066900DCC262 /* CatalogInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogInteractorTests.swift; sourceTree = "<group>"; };
+		2D1C21501FD0066900DCC262 /* CatalogPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenterTests.swift; sourceTree = "<group>"; };
+		2D1C21511FD0066900DCC262 /* CatalogViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerTests.swift; sourceTree = "<group>"; };
+		2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogWorkerTests.swift; sourceTree = "<group>"; };
 		2D71D7211FCFC65F00CB548C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2D7AA46E1FCE995900137EE5 /* Z_VIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Z_VIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7AA4711FCE995900137EE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +103,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2D1C21411FD005AB00DCC262 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D7AA46B1FCE995900137EE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,10 +134,32 @@
 			path = ProductDescription;
 			sourceTree = "<group>";
 		};
+		2D1C21451FD005AB00DCC262 /* Z_VIPTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D1C214E1FD0065A00DCC262 /* Catalog */,
+				2D1C21461FD005AC00DCC262 /* Z_VIPTests.swift */,
+				2D1C21481FD005AC00DCC262 /* Info.plist */,
+			);
+			path = Z_VIPTests;
+			sourceTree = "<group>";
+		};
+		2D1C214E1FD0065A00DCC262 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				2D1C214F1FD0066900DCC262 /* CatalogInteractorTests.swift */,
+				2D1C21501FD0066900DCC262 /* CatalogPresenterTests.swift */,
+				2D1C21511FD0066900DCC262 /* CatalogViewControllerTests.swift */,
+				2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
 		2D7AA4651FCE995900137EE5 = {
 			isa = PBXGroup;
 			children = (
 				2D7AA4701FCE995900137EE5 /* Z_VIP */,
+				2D1C21451FD005AB00DCC262 /* Z_VIPTests */,
 				2D7AA46F1FCE995900137EE5 /* Products */,
 				9507127FFDF29B2462B64A1A /* Pods */,
 				D3717EBC853491FA0A7EBBB9 /* Frameworks */,
@@ -119,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7AA46E1FCE995900137EE5 /* Z_VIP.app */,
+				2D1C21441FD005AB00DCC262 /* Z_VIPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,6 +301,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2D1C21431FD005AB00DCC262 /* Z_VIPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D1C214D1FD005AC00DCC262 /* Build configuration list for PBXNativeTarget "Z_VIPTests" */;
+			buildPhases = (
+				2D1C21401FD005AB00DCC262 /* Sources */,
+				2D1C21411FD005AB00DCC262 /* Frameworks */,
+				2D1C21421FD005AB00DCC262 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D1C214A1FD005AC00DCC262 /* PBXTargetDependency */,
+			);
+			name = Z_VIPTests;
+			productName = Z_VIPTests;
+			productReference = 2D1C21441FD005AB00DCC262 /* Z_VIPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2D7AA46D1FCE995900137EE5 /* Z_VIP */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D7AA4801FCE995900137EE5 /* Build configuration list for PBXNativeTarget "Z_VIP" */;
@@ -279,6 +349,11 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = com.zalora;
 				TargetAttributes = {
+					2D1C21431FD005AB00DCC262 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D7AA46D1FCE995900137EE5;
+					};
 					2D7AA46D1FCE995900137EE5 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -299,11 +374,19 @@
 			projectRoot = "";
 			targets = (
 				2D7AA46D1FCE995900137EE5 /* Z_VIP */,
+				2D1C21431FD005AB00DCC262 /* Z_VIPTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2D1C21421FD005AB00DCC262 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D7AA46C1FCE995900137EE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +457,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2D1C21401FD005AB00DCC262 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1C21551FD0066900DCC262 /* CatalogViewControllerTests.swift in Sources */,
+				2D1C21531FD0066900DCC262 /* CatalogInteractorTests.swift in Sources */,
+				2D1C21561FD0066900DCC262 /* CatalogWorkerTests.swift in Sources */,
+				2D1C21541FD0066900DCC262 /* CatalogPresenterTests.swift in Sources */,
+				2D1C21471FD005AC00DCC262 /* Z_VIPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D7AA46A1FCE995900137EE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,6 +503,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2D1C214A1FD005AC00DCC262 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D7AA46D1FCE995900137EE5 /* Z_VIP */;
+			targetProxy = 2D1C21491FD005AC00DCC262 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2D7AA4751FCE995900137EE5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -428,6 +531,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D1C214B1FD005AC00DCC262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37TYWLGRXS;
+				INFOPLIST_FILE = Z_VIPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.danh.Z-VIPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Z_VIP.app/Z_VIP";
+			};
+			name = Debug;
+		};
+		2D1C214C1FD005AC00DCC262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37TYWLGRXS;
+				INFOPLIST_FILE = Z_VIPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.danh.Z-VIPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Z_VIP.app/Z_VIP";
+			};
+			name = Release;
+		};
 		2D7AA47E1FCE995900137EE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -575,6 +710,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2D1C214D1FD005AC00DCC262 /* Build configuration list for PBXNativeTarget "Z_VIPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D1C214B1FD005AC00DCC262 /* Debug */,
+				2D1C214C1FD005AC00DCC262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D7AA4691FCE995900137EE5 /* Build configuration list for PBXProject "Z_VIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
