@@ -174,21 +174,61 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qlD-lM-LrW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Yzy-Kw-9pE">
+                        <barButtonItem key="rightBarButtonItem" title="Desc" id="1Tt-cX-ANE" userLabel="DescriptionButton">
+                            <connections>
+                                <action selector="didTapProductDescriptionButton:" destination="f1k-gx-W4G" id="Vm4-6W-faJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="brandLabel" destination="9fE-dh-yAH" id="wma-F5-Mms"/>
                         <outlet property="collectionView" destination="W9K-8J-ekG" id="K5E-hH-xxq"/>
                         <outlet property="nameLabel" destination="U0g-64-fRc" id="NsH-qS-4pc"/>
                         <outlet property="priceLabel" destination="2z4-Ei-YcN" id="6LW-Bo-nj5"/>
+                        <segue destination="k6m-vS-VcJ" kind="show" identifier="ShowDescription" id="6FH-dh-zi1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCI-fX-01L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="106.59670164917542"/>
         </scene>
+        <!--Product Description View Controller-->
+        <scene sceneID="fWv-7q-VN4">
+            <objects>
+                <viewController storyboardIdentifier="ProductDescriptionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k6m-vS-VcJ" customClass="ProductDescriptionViewController" customModule="Z_VIP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RE1-qn-vhy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bjH-DM-3uc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bjH-DM-3uc" firstAttribute="bottom" secondItem="G61-JR-qPu" secondAttribute="bottom" id="7YE-YI-PyH"/>
+                            <constraint firstItem="bjH-DM-3uc" firstAttribute="leading" secondItem="RE1-qn-vhy" secondAttribute="leading" id="CZz-qq-wXu"/>
+                            <constraint firstItem="bjH-DM-3uc" firstAttribute="top" secondItem="G61-JR-qPu" secondAttribute="top" id="Fsy-0t-CXb"/>
+                            <constraint firstAttribute="trailing" secondItem="bjH-DM-3uc" secondAttribute="trailing" id="UcV-mB-Azt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G61-JR-qPu"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="bjH-DM-3uc" id="gQX-Rz-34O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFI-nj-xde" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2765.5999999999999" y="106.59670164917542"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8yo-3J-et0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wMA-Ko-MYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XE1-ju-SbE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Mxh-EX-pHg">
@@ -208,6 +248,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="klV-9p-OOz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMA-Ko-MYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="134"/>
         </scene>

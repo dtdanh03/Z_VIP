@@ -13,15 +13,28 @@
 import UIKit
 
 @objc protocol ProductDetailRoutingLogic {
-  
+    func routeToProductDescription()
 }
 
 protocol ProductDetailDataPassing {
-  var dataStore: ProductDetailDataStore? { get set }
+    var dataStore: ProductDetailDataStore? { get set }
 }
 
 class ProductDetailRouter: NSObject, ProductDetailRoutingLogic, ProductDetailDataPassing {
-  weak var viewController: ProductDetailViewController?
-  var dataStore: ProductDetailDataStore?
+    weak var viewController: ProductDetailViewController?
+    var dataStore: ProductDetailDataStore?
     
+    func routeToProductDescription() {
+        guard let dataStore = dataStore else {
+            return 
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let productDescriptionVC = storyboard.instantiateViewController(withIdentifier : "ProductDescriptionViewController") as? ProductDescriptionViewController else {
+            return
+        }
+        
+        productDescriptionVC.router?.dataStore?.product = dataStore.product
+        viewController?.navigationController?.pushViewController(productDescriptionVC, animated: true)
+    }
 }

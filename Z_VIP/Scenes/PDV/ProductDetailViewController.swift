@@ -83,6 +83,9 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
         brandLabel.text = product.product.brand
         priceLabel.text = product.product.price
     }
+    @IBAction func didTapProductDescriptionButton(_ sender: UIBarButtonItem) {
+        router?.routeToProductDescription()
+    }
 }
 
 extension ProductDetailViewController: UICollectionViewDataSource {

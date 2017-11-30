@@ -13,6 +13,11 @@ enum Result<T> {
     case failure(String)
 }
 
+enum SingleResult<T> {
+    case success(T)
+    case failure(String)
+}
+
 class ServiceManager {
     
     //All services
@@ -45,7 +50,7 @@ class ProductService {
         callback(Result.success(products))
     }
     
-    func loadProductImage(_ callback: @escaping (Result<String>)->Void) {
+    func loadProductImage(for product: Product, callback: @escaping (Result<String>)->Void) {
         guard let json = loadJson(forResource: "ImageList", ofType: "json") else {
             callback(Result.failure("Cannot load resource"))
             return
@@ -57,6 +62,16 @@ class ProductService {
         }
         
         callback(Result.success(imageList))
+    }
+    
+    func loadProductDescription(for product: Product, callback: @escaping (SingleResult<String>)->Void) {
+        guard let path = Bundle.main.path(forResource: "ProductDescription", ofType: "json"),
+            let description = try? String.init(contentsOfFile: path) else {
+                callback(SingleResult.failure("Cannot read data"))
+                return
+        }
+        
+        callback(SingleResult.success(description))
     }
     
 }
