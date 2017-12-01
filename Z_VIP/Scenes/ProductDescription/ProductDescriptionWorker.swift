@@ -12,9 +12,23 @@
 
 import UIKit
 
-class ProductDescriptionWorker {
+protocol ProductDescriptionProtocol {
+    func fetchProductDescription(for product: Product, _ callback: @escaping (SingleResult<String>)->Void)
+}
+
+class ProductDescriptionWorker: ProductDescriptionProtocol {
+    var productService: ProductService
+    
+    init(productService: ProductService) {
+        self.productService = productService
+    }
+    
+    convenience init() {
+        self.init(productService: ServiceManager.product)
+    }
+    
     func fetchProductDescription(for product: Product, _ callback: @escaping (SingleResult<String>)->Void) {
-        ServiceManager.product.loadProductDescription(for: product) { (result) in
+        productService.loadProductDescription(for: product) { (result) in
             callback(result)
         }
     }

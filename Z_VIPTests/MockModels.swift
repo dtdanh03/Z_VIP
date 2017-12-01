@@ -18,6 +18,7 @@ struct MockModels {
 class MockProductService: ProductService {
     var shouldReturnFailure = false
     static let mockImageList = ["a", "b", "c", "d"]
+    static let mockProductDescription = "Product description"
     
     init(shouldReturnFailure: Bool) {
         self.shouldReturnFailure = shouldReturnFailure
@@ -39,7 +40,7 @@ class MockProductService: ProductService {
     }
     
     func loadProductDescription(for product: Product, callback: @escaping (SingleResult<String>) -> Void) {
-        let successResult = SingleResult.success("Product description")
+        let successResult = SingleResult.success(MockProductService.mockProductDescription)
         shouldReturnFailure ? callback(SingleResult.failure("Load product description error")) : callback(successResult)
     }
 }

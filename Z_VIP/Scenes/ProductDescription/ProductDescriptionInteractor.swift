@@ -22,14 +22,13 @@ protocol ProductDescriptionDataStore {
 
 class ProductDescriptionInteractor: ProductDescriptionBusinessLogic, ProductDescriptionDataStore {
     var presenter: ProductDescriptionPresentationLogic?
-    var worker: ProductDescriptionWorker?
+    var worker: ProductDescriptionProtocol = ProductDescriptionWorker()
     var product = Product()
     
     // MARK: Do something
     
     func fetchProductDescription() {
-        worker = ProductDescriptionWorker()
-        worker?.fetchProductDescription(for: product, { (result) in
+        worker.fetchProductDescription(for: product, { (result) in
             switch result {
             case .success(let description):
                 self.presenter?.present(productDescription: ProductDescription.Response(rawString: description))
