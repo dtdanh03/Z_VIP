@@ -49,17 +49,28 @@ class CatalogInteractorTests: XCTestCase {
         }
     }
     
+    class CatalogWorkerSpy: CatalogWorker {
+        var fetchProductCalled = false
+        override func fetchProduct(_ callback: @escaping (Result<Product>) -> Void) {
+            fetchProductCalled = true
+            callback(Result.success([MockModels.product1, MockModels.product2]))
+        }
+    }
+    
     // MARK: Tests
     
-    func testFetchProducts() {
+    func testFetchProductShouldCallWorkerAndPresentTheResult() {
         // Given
-        let spy = CatalogPresentationLogicSpy()
-        sut.presenter = spy
+        let presenterSpy = CatalogPresentationLogicSpy()
+        sut.presenter = presenterSpy
+        let workerSpy = CatalogWorkerSpy()
+        sut.worker = workerSpy
         
         // When
         sut.fetchProducts()
         
         // Then
-        XCTAssertTrue(spy.presentProductsCalled, "fetchProducts() should ask the presenter to format the result")
+        XCTAssertTrue(workerSpy.fetchProductCalled, "fetchProducts should call worker to fetch products")
+        XCTAssertTrue(presenterSpy.presentProductsCalled, "fetchProducts() should ask the presenter to format the result")
     }
 }

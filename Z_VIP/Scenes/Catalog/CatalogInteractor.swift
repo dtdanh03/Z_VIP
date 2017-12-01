@@ -23,12 +23,11 @@ protocol CatalogDataStore {
 class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore{
     
     var presenter: CatalogPresentationLogic?
-    var worker: CatalogWorker?
+    var worker = CatalogWorker()
     var products: [Product] = []
     
     func fetchProducts() {
-        worker = CatalogWorker()
-        worker?.fetchProduct({ [weak self] (result) in
+        worker.fetchProduct({ [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let products):

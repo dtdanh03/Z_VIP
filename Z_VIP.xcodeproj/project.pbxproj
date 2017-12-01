@@ -20,6 +20,11 @@
 		2D1C21541FD0066900DCC262 /* CatalogPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21501FD0066900DCC262 /* CatalogPresenterTests.swift */; };
 		2D1C21551FD0066900DCC262 /* CatalogViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21511FD0066900DCC262 /* CatalogViewControllerTests.swift */; };
 		2D1C21561FD0066900DCC262 /* CatalogWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */; };
+		2D1C215C1FD01A4B00DCC262 /* ProductDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21581FD01A4B00DCC262 /* ProductDetailInteractorTests.swift */; };
+		2D1C215D1FD01A4B00DCC262 /* ProductDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21591FD01A4B00DCC262 /* ProductDetailPresenterTests.swift */; };
+		2D1C215E1FD01A4B00DCC262 /* ProductDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C215A1FD01A4B00DCC262 /* ProductDetailViewControllerTests.swift */; };
+		2D1C215F1FD01A4B00DCC262 /* ProductDetailWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C215B1FD01A4B00DCC262 /* ProductDetailWorkerTests.swift */; };
+		2D1C21631FD0F7DD00DCC262 /* MockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21621FD0F7DD00DCC262 /* MockModels.swift */; };
 		2D71D7221FCFC65F00CB548C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71D7211FCFC65F00CB548C /* Error.swift */; };
 		2D7AA4721FCE995900137EE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7AA4711FCE995900137EE5 /* AppDelegate.swift */; };
 		2D7AA4771FCE995900137EE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AA4751FCE995900137EE5 /* Main.storyboard */; };
@@ -71,6 +76,11 @@
 		2D1C21501FD0066900DCC262 /* CatalogPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenterTests.swift; sourceTree = "<group>"; };
 		2D1C21511FD0066900DCC262 /* CatalogViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerTests.swift; sourceTree = "<group>"; };
 		2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogWorkerTests.swift; sourceTree = "<group>"; };
+		2D1C21581FD01A4B00DCC262 /* ProductDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractorTests.swift; sourceTree = "<group>"; };
+		2D1C21591FD01A4B00DCC262 /* ProductDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenterTests.swift; sourceTree = "<group>"; };
+		2D1C215A1FD01A4B00DCC262 /* ProductDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		2D1C215B1FD01A4B00DCC262 /* ProductDetailWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailWorkerTests.swift; sourceTree = "<group>"; };
+		2D1C21621FD0F7DD00DCC262 /* MockModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModels.swift; sourceTree = "<group>"; };
 		2D71D7211FCFC65F00CB548C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2D7AA46E1FCE995900137EE5 /* Z_VIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Z_VIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7AA4711FCE995900137EE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +147,11 @@
 		2D1C21451FD005AB00DCC262 /* Z_VIPTests */ = {
 			isa = PBXGroup;
 			children = (
+				2D1C21571FD016AE00DCC262 /* PDV */,
 				2D1C214E1FD0065A00DCC262 /* Catalog */,
 				2D1C21461FD005AC00DCC262 /* Z_VIPTests.swift */,
 				2D1C21481FD005AC00DCC262 /* Info.plist */,
+				2D1C21621FD0F7DD00DCC262 /* MockModels.swift */,
 			);
 			path = Z_VIPTests;
 			sourceTree = "<group>";
@@ -153,6 +165,17 @@
 				2D1C21521FD0066900DCC262 /* CatalogWorkerTests.swift */,
 			);
 			path = Catalog;
+			sourceTree = "<group>";
+		};
+		2D1C21571FD016AE00DCC262 /* PDV */ = {
+			isa = PBXGroup;
+			children = (
+				2D1C21581FD01A4B00DCC262 /* ProductDetailInteractorTests.swift */,
+				2D1C21591FD01A4B00DCC262 /* ProductDetailPresenterTests.swift */,
+				2D1C215A1FD01A4B00DCC262 /* ProductDetailViewControllerTests.swift */,
+				2D1C215B1FD01A4B00DCC262 /* ProductDetailWorkerTests.swift */,
+			);
+			path = PDV;
 			sourceTree = "<group>";
 		};
 		2D7AA4651FCE995900137EE5 = {
@@ -462,10 +485,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1C21551FD0066900DCC262 /* CatalogViewControllerTests.swift in Sources */,
+				2D1C215D1FD01A4B00DCC262 /* ProductDetailPresenterTests.swift in Sources */,
 				2D1C21531FD0066900DCC262 /* CatalogInteractorTests.swift in Sources */,
+				2D1C21631FD0F7DD00DCC262 /* MockModels.swift in Sources */,
 				2D1C21561FD0066900DCC262 /* CatalogWorkerTests.swift in Sources */,
+				2D1C215C1FD01A4B00DCC262 /* ProductDetailInteractorTests.swift in Sources */,
+				2D1C215F1FD01A4B00DCC262 /* ProductDetailWorkerTests.swift in Sources */,
 				2D1C21541FD0066900DCC262 /* CatalogPresenterTests.swift in Sources */,
 				2D1C21471FD005AC00DCC262 /* Z_VIPTests.swift in Sources */,
+				2D1C215E1FD01A4B00DCC262 /* ProductDetailViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

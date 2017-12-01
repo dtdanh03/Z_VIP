@@ -40,8 +40,10 @@ class CatalogPresenterTests: XCTestCase {
     class CatalogDisplayLogicSpy: CatalogDisplayLogic {
         var displayViewModelCalled = false
         var displayErrorCalled = false
+        var catalogViewModel: Catalog.ViewModel!
         func display(viewModel: Catalog.ViewModel) {
             displayViewModelCalled = true
+            catalogViewModel = viewModel
         }
         
         func display(error: Z_VIP.Error) {
@@ -55,13 +57,18 @@ class CatalogPresenterTests: XCTestCase {
         // Given
         let spy = CatalogDisplayLogicSpy()
         sut.viewController = spy
-        let product = Product()
-        let response = Catalog.Response(products: [product])
-        
+        let response = Catalog.Response(products: [MockModels.product1, MockModels.product2])
+        let viewModelToDisplay = [Product.catalogDisplayProduct(from: MockModels.product1),
+                                  Product.catalogDisplayProduct(from: MockModels.product2)]
         // When
         sut.present(products: response)
         
         // Then
         XCTAssertTrue(spy.displayViewModelCalled, "present(products:) should ask the view controller to display the result")
+        XCTAssertEqual(viewModelToDisplay.count, spy.catalogViewModel.displayedProducts.count, "present(product:) should ask display logic to display the same amount of product in the response")
+        spy.catalogViewModel.displayedProducts.enumerated().forEach { (index, product) in
+            XCTAssertEqual(product.name, viewModelToDisplay[index].name, "Product name in response and view model should be the same")
+            XCTAssertEqual(product.mainImageUrl, viewModelToDisplay[index].mainImageUrl, "Product image url in response and view model should be the same")
+        }
     }
 }

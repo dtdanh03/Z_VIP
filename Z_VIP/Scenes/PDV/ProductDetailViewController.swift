@@ -79,9 +79,9 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
     func reloadUI() {
         navigationItem.title = product.product.name
         collectionView.reloadData()
-        nameLabel.text = product.product.name
-        brandLabel.text = product.product.brand
-        priceLabel.text = product.product.price
+        nameLabel.text = "Product name: \(product.product.name)"
+        brandLabel.text = "Brand: \(product.product.brand)"
+        priceLabel.text = "Price: \(product.product.price)"
     }
     @IBAction func didTapProductDescriptionButton(_ sender: UIBarButtonItem) {
         router?.routeToProductDescription()

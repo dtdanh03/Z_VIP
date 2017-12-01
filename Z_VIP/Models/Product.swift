@@ -24,6 +24,14 @@ class Product {
         brand = ""
     }
     
+    init(id: String, name: String, mainImageUrl: String, price: String, brand: String) {
+        self.id = id
+        self.name = name
+        self.mainImageUrl = mainImageUrl
+        self.price = price
+        self.brand = brand
+    }
+    
     init?(json: JSON) {
         guard json.error == nil else { return nil }
         id = json["id"].string ?? ""
