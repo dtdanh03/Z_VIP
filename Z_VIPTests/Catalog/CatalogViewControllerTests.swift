@@ -47,12 +47,22 @@ class CatalogViewControllerTests: XCTestCase {
     
     // MARK: Test doubles
     
-    class CatalogBusinessLogicSpy: CatalogBusinessLogic {
+    class CatalogBusinessLogicSpy: CatalogBusinessLogic, ViewCatalogTracking{
         var fetchProductsCalled = false
+        var trackOpenScreenCalled = false
+        var trackProductTapCalled = false
+        
         func fetchProducts() {
             fetchProductsCalled = true
         }
-
+        
+        func trackOpenScreen() {
+            trackOpenScreenCalled = true
+        }
+        
+        func trackProductTap(at index: Int) {
+            trackProductTapCalled = true
+        }
     }
     
     class CollectionViewSpy: UICollectionView {

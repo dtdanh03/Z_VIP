@@ -22,7 +22,8 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel: Catalog.ViewModel = Catalog.ViewModel(displayedProducts: [])
-    var interactor: CatalogBusinessLogic?
+    var interactor: (CatalogBusinessLogic & ViewCatalogTracking)?
+    
     var router: (NSObjectProtocol & CatalogRoutingLogic & CatalogDataPassing)?
     
     // MARK: Object lifecycle
@@ -58,6 +59,11 @@ class CatalogViewController: UIViewController, CatalogDisplayLogic {
         super.viewDidLoad()
         setupCollectionView()
         interactor?.fetchProducts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.trackOpenScreen()
     }
     
     func setupCollectionView() {
@@ -102,6 +108,7 @@ extension CatalogViewController: UICollectionViewDataSource {
 
 extension CatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        interactor?.trackProductTap(at: indexPath.item)
         router?.routeToProductDetail(productAt: indexPath.item)
     }
 }

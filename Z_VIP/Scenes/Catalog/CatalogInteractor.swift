@@ -39,3 +39,17 @@ class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore {
         })
     }
 }
+
+extension CatalogInteractor: ViewCatalogTracking {
+    var tracker: CatalogTracking {
+        return GeneralTracker()
+    }
+    
+    func trackOpenScreen() {
+        tracker.trackOpenScreen(name: "Catalog")
+    }
+    
+    func trackProductTap(at index: Int) {
+        tracker.trackProductTap(products[index])
+    }
+}
