@@ -12,9 +12,23 @@
 
 import UIKit
 
-class ProductDetailWorker {
+protocol ProductDetailWorkerProtocol {
+    func fetchImageList(for product: Product, _ callback: @escaping (Result<String>)->Void)
+}
+
+class ProductDetailWorker: ProductDetailWorkerProtocol {
+    var productService: ProductService
+    
+    init(productService: ProductService) {
+        self.productService = productService
+    }
+    
+    convenience init() {
+        self.init(productService: ServiceManager.product)
+    }
+    
     func fetchImageList(for product: Product, _ callback: @escaping (Result<String>)->Void) {
-        ServiceManager.product.loadProductImage(for: product) { (result) in
+        productService.loadProductImage(for: product) { (result) in
             callback(result)
         }
     }

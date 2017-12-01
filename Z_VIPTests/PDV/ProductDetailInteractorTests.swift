@@ -38,11 +38,18 @@ class ProductDetailInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class ProductDetailPresentationLogicSpy: ProductDetailPresentationLogic {
-        var presentResponseCalled = false
+        var isPresentResponseCalled = false
         
-        func present(response: ProductDetail.Response)
-        {
-            presentResponseCalled = true
+        func present(response: ProductDetail.Response){
+            isPresentResponseCalled = true
+        }
+    }
+    
+    class ProductDetailWorkerSpy: ProductDetailWorker {
+        var isFetchImageListCalled = false
+        override func fetchImageList(for product: Product, _ callback: @escaping (Result<String>) -> Void) {
+            isFetchImageListCalled = true
+            callback(Result.success([]))
         }
     }
     
@@ -50,14 +57,17 @@ class ProductDetailInteractorTests: XCTestCase {
     
     func testFetchImageList() {
         // Given
-        let spy = ProductDetailPresentationLogicSpy()
-        sut.presenter = spy
+        let presenterSpy = ProductDetailPresentationLogicSpy()
+        sut.presenter = presenterSpy
+        let workerSpy = ProductDetailWorkerSpy()
+        sut.worker = workerSpy
         let request = ProductDetail.Request(product: Product())
         
         // When
         sut.fetchImageList(for: request)
         
         // Then
-        XCTAssertTrue(spy.presentResponseCalled, "fetchImageList(for:) should ask the presenter to format the result")
+        XCTAssertTrue(presenterSpy.isPresentResponseCalled, "fetchImageList(for:) should ask the presenter to format the result")
+        XCTAssertTrue(workerSpy.isFetchImageListCalled, "fetchImageList(for:) should ask worker to fetch image list")
     }
 }

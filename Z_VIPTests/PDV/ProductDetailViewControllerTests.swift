@@ -55,9 +55,21 @@ class ProductDetailViewControllerTests: XCTestCase {
         }
     }
     
+    class CollectionViewSpy: UICollectionView {
+        var isReloadDataCalled = false
+        
+        convenience init() {
+            self.init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        }
+        
+        override func reloadData() {
+            isReloadDataCalled = true
+        }
+    }
+    
     // MARK: Tests
     
-    func testShouldFetchImageListWhenViewLoaded() {
+    func testShouldFetchImageList() {
         // Given
         let spy = ProductDetailBusinessLogicSpy()
         sut.interactor = spy
@@ -69,15 +81,58 @@ class ProductDetailViewControllerTests: XCTestCase {
         XCTAssertTrue(spy.fetchImageListCalled, "viewDidLoad() should ask the interactor to fetch image list")
     }
     
-    func testDisplaySomething() {
+    func testDisplayProductShouldTriggerReloadData() {
         // Given
-        let viewModel = ProductDetail.ViewModel(product: ProductDetail.ViewModel.DisplayProduct(), imageList: [])
+        loadView()
+        let collectionViewSpy = CollectionViewSpy()
+        sut.collectionView = collectionViewSpy
+        let mockViewModel = ProductDetail.ViewModel(product: Product.productDetailDisplayProduct(from: MockModels.product1), imageList: ["a", "b", "c", "d"])
         
         // When
-        loadView()
-        sut.display(productDetail: viewModel)
+        sut.display(productDetail: mockViewModel)
         
         // Then
-        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+        XCTAssertTrue(collectionViewSpy.isReloadDataCalled, "display(productDetail:) should trigger collection view reload data")
+    }
+    
+    func testNumberOfSectionInCollectionViewShouldBeOne() {
+        //Given
+        loadView()
+        let collectionView = sut.collectionView
+        
+        //When
+        let numberOfSection = sut.numberOfSections(in: collectionView!)
+        
+        //Then
+        XCTAssertEqual(numberOfSection, 1, "Number of section in collection view should always be one")
+    }
+    
+    func testNumberOfItemShouldEqualToNumberOfProductInViewModel() {
+        //Given
+        loadView()
+        let collectionView = sut.collectionView
+        let imageList = ["a", "b", "c", "d"]
+        sut.product = ProductDetail.ViewModel(product: Product.productDetailDisplayProduct(from: MockModels.product1), imageList: imageList)
+        
+        //When
+        let numberOfItems = sut.collectionView(collectionView!, numberOfItemsInSection: 0)
+        
+        //Then
+        XCTAssertEqual(imageList.count, numberOfItems, "Number of images to display should be equal to number of item in view model")
+    }
+    
+    func testCollectionViewCellShouldDisplayCorrectInformation() {
+        //Given
+        loadView()
+        let displayProduct = Product.productDetailDisplayProduct(from: MockModels.product1)
+        let mockViewModel = ProductDetail.ViewModel(product: displayProduct, imageList: ["a", "b", "c", "d"])
+        
+        //When
+        sut.display(productDetail: mockViewModel)
+        
+        //Then
+        XCTAssertEqual(sut.nameLabel.text, "Product name: \(displayProduct.name)", "Product name label should display correct product name")
+        XCTAssertEqual(sut.brandLabel.text, "Brand: \(displayProduct.brand)", "Product brand label should display correct product brand")
+        XCTAssertEqual(sut.priceLabel.text, "Price: \(displayProduct.price)", "Product price label should display correct product price")
     }
 }

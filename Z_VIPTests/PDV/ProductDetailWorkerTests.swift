@@ -32,18 +32,56 @@ class ProductDetailWorkerTests: XCTestCase {
     // MARK: Test setup
     
     func setupProductDetailWorker() {
-        sut = ProductDetailWorker()
+        sut = ProductDetailWorker(productService: MockProductService())
     }
     
     // MARK: Test doubles
     
     // MARK: Tests
     
-    func testSomething() {
-        // Given
+    func testFetchProductListSuccess() {
+        //Given
+        let expect = expectation(description: "ProductDetail worker should successfully return product list")
+        var resultImageList: [String] = []
+        //When
+        sut.fetchImageList(for: MockModels.product1) { (result) in
+            switch result {
+            case .success(let imageList):
+                resultImageList = imageList
+                expect.fulfill()
+            case .failure(_):
+                break
+            }
+        }
         
-        // When
+        //Then
+        waitForExpectations(timeout: 1) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+        XCTAssertEqual(resultImageList, MockProductService.mockImageList, "fetchImageList(for:) should return correct image list data from service")
+    }
+    
+    func testFetchProductFailure() {
+        //Given
+        let expect = expectation(description: "ProductDetail worker should return failure when service cannot load imagelist")
+        sut.productService = MockProductService(shouldReturnFailure: true)
+        //When
+        sut.fetchImageList(for: MockModels.product1) { (result) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(_):
+                expect.fulfill()
+            }
+        }
         
-        // Then
+        //Then
+        waitForExpectations(timeout: 1) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Product {
+class Product: Equatable {
     
     var id: String
     var name: String
@@ -39,5 +39,13 @@ class Product {
         mainImageUrl = json["mainImageUrl"].string ?? ""
         price = json["price"].string ?? ""
         brand = json["brand"].string ?? ""
+    }
+    
+    static func ==(product1: Product, product2: Product) -> Bool {
+        return product1.id == product2.id
+            && product1.name == product2.name
+            && product1.mainImageUrl == product2.mainImageUrl
+            && product1.brand == product2.brand
+            && product1.price == product2.price
     }
 }

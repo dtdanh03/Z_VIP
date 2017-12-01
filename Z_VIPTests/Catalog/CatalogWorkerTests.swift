@@ -32,30 +32,57 @@ class CatalogWorkerTests: XCTestCase {
     // MARK: Test setup
     
     func setupCatalogWorker() {
-        sut = CatalogWorker()
+        sut = CatalogWorker(productService: MockProductService())
     }
     
     // MARK: Test doubles
     
     // MARK: Tests
     
-    func testFetchProducts() {
-        let expect = expectation(description: "Fetch products should load 27 products from json")
+    func testFetchProductsSuccess() {
+        //Given
+        let expect = expectation(description: "Catalog worker should successfully return products")
+        var resultProducts: [Product] = []
+        //When
         sut.fetchProduct { (result) in
             switch result {
             case .success(let products):
-                if products.count == 27 {
-                    expect.fulfill()
-                }
-            case .failure(let message):
-                print(message)
+                resultProducts = products
+                expect.fulfill()
+            case .failure(_):
+                break
             }
         }
         
+        //Then
+        waitForExpectations(timeout: 1) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+        XCTAssertEqual(resultProducts, MockModels.products, "fetchProduct() should return correct data")
+    }
+    
+    func testFetchProductFailure() {
+        //Given
+        let expect = expectation(description: "Catalog worker should return error if fetchProduct() fail")
+        sut.productService = MockProductService(shouldReturnFailure: true)
+        //When
+        sut.fetchProduct { (result) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(_):
+                expect.fulfill()
+            }
+        }
+        
+        //Then
         waitForExpectations(timeout: 1) { (error) in
             if let error = error {
                 print(error)
             }
         }
     }
+    
 }

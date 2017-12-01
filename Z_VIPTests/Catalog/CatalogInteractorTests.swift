@@ -49,9 +49,9 @@ class CatalogInteractorTests: XCTestCase {
         }
     }
     
-    class CatalogWorkerSpy: CatalogWorker {
+    class CatalogWorkerSpy: CatalogWorkerProtocol {
         var fetchProductCalled = false
-        override func fetchProduct(_ callback: @escaping (Result<Product>) -> Void) {
+        func fetchProduct(_ callback: @escaping (Result<Product>) -> Void) {
             fetchProductCalled = true
             callback(Result.success([MockModels.product1, MockModels.product2]))
         }

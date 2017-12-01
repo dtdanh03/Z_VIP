@@ -21,11 +21,17 @@ enum SingleResult<T> {
 class ServiceManager {
     
     //All services
-    static let product = ProductService()
+    static let product = JSONProductService()
     
 }
 
-class ProductService {
+protocol ProductService {
+    func loadProducts(_ callback: @escaping (Result<Product>)->Void)
+    func loadProductImage(for product: Product, callback: @escaping (Result<String>)->Void)
+    func loadProductDescription(for product: Product, callback: @escaping (SingleResult<String>)->Void)
+}
+
+class JSONProductService: ProductService {
     
     fileprivate func loadJson(forResource name: String, ofType type: String) -> JSON? {
         guard let path = Bundle.main.path(forResource: name, ofType: type),

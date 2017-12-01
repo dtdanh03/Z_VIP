@@ -20,10 +20,10 @@ protocol CatalogDataStore {
     var products: [Product] { get }
 }
 
-class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore{
+class CatalogInteractor: CatalogBusinessLogic, CatalogDataStore {
     
     var presenter: CatalogPresentationLogic?
-    var worker = CatalogWorker()
+    var worker: CatalogWorkerProtocol = CatalogWorker()
     var products: [Product] = []
     
     func fetchProducts() {

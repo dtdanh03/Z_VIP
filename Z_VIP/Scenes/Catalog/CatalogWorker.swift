@@ -12,9 +12,24 @@
 
 import UIKit
 
-class CatalogWorker {
+protocol CatalogWorkerProtocol {
+    func fetchProduct(_ callback: @escaping (Result<Product>)->Void)
+}
+
+class CatalogWorker: CatalogWorkerProtocol {
+    
+    var productService: ProductService
+    
+    init(productService: ProductService) {
+        self.productService = productService
+    }
+    
+    convenience init() {
+        self.init(productService: ServiceManager.product)
+    }
+    
     func fetchProduct(_ callback: @escaping (Result<Product>)->Void) {
-        ServiceManager.product.loadProducts { (result) in
+        productService.loadProducts { (result) in
             callback(result)
         }
     }

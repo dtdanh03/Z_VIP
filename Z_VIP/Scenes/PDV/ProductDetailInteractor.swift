@@ -23,11 +23,10 @@ protocol ProductDetailDataStore {
 class ProductDetailInteractor: ProductDetailBusinessLogic, ProductDetailDataStore {
     var product: Product = Product()
     var presenter: ProductDetailPresentationLogic?
-    var worker: ProductDetailWorker?
+    var worker: ProductDetailWorkerProtocol = ProductDetailWorker()
     
     func fetchImageList(for request: ProductDetail.Request) {
-        worker = ProductDetailWorker()
-        worker?.fetchImageList(for: request.product, { (result) in
+        worker.fetchImageList(for: request.product, { (result) in
             switch result {
             case .success(let imageUrls):
                 self.presenter?.present(response: ProductDetail.Response(product: self.product, imageList: imageUrls))

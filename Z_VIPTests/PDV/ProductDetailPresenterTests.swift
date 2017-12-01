@@ -40,9 +40,11 @@ class ProductDetailPresenterTests: XCTestCase {
     class ProductDetailDisplayLogicSpy: ProductDetailDisplayLogic {
         
         var displayProductDetailCalled = false
+        var viewModel: ProductDetail.ViewModel!
         
         func display(productDetail product: ProductDetail.ViewModel) {
             displayProductDetailCalled = true
+            viewModel = product
         }
     }
     
@@ -52,12 +54,18 @@ class ProductDetailPresenterTests: XCTestCase {
         // Given
         let spy = ProductDetailDisplayLogicSpy()
         sut.viewController = spy
-        let response = ProductDetail.Response(product: Product(), imageList: [])
+        let imageList = ["a", "b", "c", "d"]
+        let response = ProductDetail.Response(product: MockModels.product1, imageList: imageList)
+        let displayProduct = Product.productDetailDisplayProduct(from: MockModels.product1)
         
         // When
         sut.present(response: response)
         
         // Then
         XCTAssertTrue(spy.displayProductDetailCalled, "present(response:) should ask the view controller to display the result")
+        XCTAssertEqual(spy.viewModel.product.name, displayProduct.name, "Product name to be displayed should match original product name")
+        XCTAssertEqual(spy.viewModel.product.brand, displayProduct.brand, "Product brand to be displayed should match original product brand")
+        XCTAssertEqual(spy.viewModel.product.price, displayProduct.price, "Product price to be displayed should be in correct format")
+        XCTAssertEqual(spy.viewModel.imageList, imageList, "Image list to be displayed should match the image list from response")
     }
 }
