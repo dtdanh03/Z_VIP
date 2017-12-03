@@ -36,3 +36,17 @@ class ProductDetailInteractor: ProductDetailBusinessLogic, ProductDetailDataStor
         })
     }
 }
+
+extension ProductDetailInteractor: ViewProductDetailTracking {
+    var tracker: ProductDetailTracking {
+        return GeneralTracker()
+    }
+    
+    func trackOpenScreen() {
+        tracker.trackOpenScreen(name: "ProductDetail")
+    }
+    
+    func trackTapDetailButton() {
+        tracker.trackTapDetailButton()
+    }
+}

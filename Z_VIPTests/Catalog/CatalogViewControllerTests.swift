@@ -47,7 +47,7 @@ class CatalogViewControllerTests: XCTestCase {
     
     // MARK: Test doubles
     
-    class CatalogBusinessLogicSpy: CatalogBusinessLogic, ViewCatalogTracking{
+    class CatalogBusinessLogicSpy: CatalogBusinessLogic, ViewCatalogTracking {
         var fetchProductsCalled = false
         var trackOpenScreenCalled = false
         var trackProductTapCalled = false
@@ -89,6 +89,18 @@ class CatalogViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(spy.fetchProductsCalled, "viewDidLoad() should ask the interactor to do something")
+    }
+    
+    func testShouldTrackOpenScreenWhenViewLoaded() {
+        // Given
+        let spy = CatalogBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        
+        // Then
+        XCTAssertTrue(spy.trackOpenScreenCalled, "viewDidLoad() should trigger tracking on open screen event")
     }
     
     func testDisplayProductShouldTriggerReloadData() {
@@ -149,5 +161,22 @@ class CatalogViewControllerTests: XCTestCase {
         //Then
         XCTAssertEqual(firstCell.productNameLabel.text, productsToDisplay[0].name, "Product cell should display the information in the view model")
         XCTAssertEqual(secondCell.productNameLabel.text, productsToDisplay[1].name, "Product cell should display the information in the view model")
+    }
+    
+    func testTapOnCellShouldTriggerTrackingEvent() {
+        //Given
+        loadView()
+        let spy = CatalogBusinessLogicSpy()
+        sut.interactor = spy
+        let collectionView = sut.collectionView
+        let productsToDisplay = [Product.catalogDisplayProduct(from: MockModels.product1),
+                                 Product.catalogDisplayProduct(from: MockModels.product2)]
+        sut.viewModel = Catalog.ViewModel(displayedProducts: productsToDisplay)
+        
+        //When
+        sut.collectionView(collectionView!, didSelectItemAt: IndexPath(item: 0, section: 0))
+        
+        //Then
+        XCTAssertTrue(spy.trackProductTapCalled, "Tap on cell should trigger tracking event")
     }
 }

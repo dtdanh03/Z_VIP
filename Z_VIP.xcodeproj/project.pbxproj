@@ -32,6 +32,7 @@
 		2D1C21701FD1547300DCC262 /* CatalogTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C216F1FD1547300DCC262 /* CatalogTracker.swift */; };
 		2D1C21721FD1550000DCC262 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21711FD1550000DCC262 /* Protocol.swift */; };
 		2D1C21741FD1562400DCC262 /* GeneralTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C21731FD1562400DCC262 /* GeneralTracker.swift */; };
+		2D1C217B1FD461B900DCC262 /* ProductDetailTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C217A1FD461B900DCC262 /* ProductDetailTracker.swift */; };
 		2D71D7221FCFC65F00CB548C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71D7211FCFC65F00CB548C /* Error.swift */; };
 		2D7AA4721FCE995900137EE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7AA4711FCE995900137EE5 /* AppDelegate.swift */; };
 		2D7AA4771FCE995900137EE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AA4751FCE995900137EE5 /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		2D1C216F1FD1547300DCC262 /* CatalogTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTracker.swift; sourceTree = "<group>"; };
 		2D1C21711FD1550000DCC262 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		2D1C21731FD1562400DCC262 /* GeneralTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTracker.swift; sourceTree = "<group>"; };
+		2D1C217A1FD461B900DCC262 /* ProductDetailTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTracker.swift; sourceTree = "<group>"; };
 		2D71D7211FCFC65F00CB548C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2D7AA46E1FCE995900137EE5 /* Z_VIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Z_VIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7AA4711FCE995900137EE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 			path = Tracking;
 			sourceTree = "<group>";
 		};
+		2D1C21791FD461A500DCC262 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				2D1C217A1FD461B900DCC262 /* ProductDetailTracker.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		2D7AA4651FCE995900137EE5 = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +332,7 @@
 		2D7AA4A31FCF10D500137EE5 /* PDV */ = {
 			isa = PBXGroup;
 			children = (
+				2D1C21791FD461A500DCC262 /* Tracking */,
 				2D7AA4B01FCF1CDC00137EE5 /* Views */,
 				2D7AA4A41FCF10F800137EE5 /* ProductDetailInteractor.swift */,
 				2D7AA4A51FCF10F800137EE5 /* ProductDetailModels.swift */,
@@ -565,6 +576,7 @@
 				2D7AA48E1FCE99DF00137EE5 /* CatalogPresenter.swift in Sources */,
 				2D7AA48F1FCE99DF00137EE5 /* CatalogRouter.swift in Sources */,
 				2D7AA4AF1FCF10F800137EE5 /* ProductDetailWorker.swift in Sources */,
+				2D1C217B1FD461B900DCC262 /* ProductDetailTracker.swift in Sources */,
 				2D7AA49A1FCEA40B00137EE5 /* Product.swift in Sources */,
 				2D7AA4AE1FCF10F800137EE5 /* ProductDetailViewController.swift in Sources */,
 				2D7AA4971FCEA35B00137EE5 /* ProductCollectionViewCell.swift in Sources */,

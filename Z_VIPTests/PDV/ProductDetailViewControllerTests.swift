@@ -47,11 +47,21 @@ class ProductDetailViewControllerTests: XCTestCase {
     
     // MARK: Test doubles
     
-    class ProductDetailBusinessLogicSpy: ProductDetailBusinessLogic {
+    class ProductDetailBusinessLogicSpy: ProductDetailBusinessLogic, ViewProductDetailTracking {
         var fetchImageListCalled = false
+        var trackOpenScreenCalled = false
+        var trackTapDetailButtonCalled = false
         
         func fetchImageList(for request: ProductDetail.Request) {
             fetchImageListCalled = true
+        }
+        
+        func trackOpenScreen() {
+            trackOpenScreenCalled = true
+        }
+        
+        func trackTapDetailButton() {
+            trackTapDetailButtonCalled = true
         }
     }
     
@@ -79,6 +89,18 @@ class ProductDetailViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(spy.fetchImageListCalled, "viewDidLoad() should ask the interactor to fetch image list")
+    }
+    
+    func testShouldTriggerTrackOpenScreenWhenViewLoaded() {
+        // Given
+        let spy = ProductDetailBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        
+        // Then
+        XCTAssertTrue(spy.trackOpenScreenCalled, "viewDidLoad() should trigger track open screen event")
     }
     
     func testDisplayProductShouldTriggerReloadData() {
@@ -134,5 +156,17 @@ class ProductDetailViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.nameLabel.text, "Product name: \(displayProduct.name)", "Product name label should display correct product name")
         XCTAssertEqual(sut.brandLabel.text, "Brand: \(displayProduct.brand)", "Product brand label should display correct product brand")
         XCTAssertEqual(sut.priceLabel.text, "Price: \(displayProduct.price)", "Product price label should display correct product price")
+    }
+    
+    func testShouldTrackTapButtonEvent() {
+        // Given
+        let spy = ProductDetailBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        sut.didTapProductDescriptionButton(UIBarButtonItem())
+        
+        // Then
+        XCTAssertTrue(spy.trackTapDetailButtonCalled, "Tap detail button should trigger tracking event")
     }
 }

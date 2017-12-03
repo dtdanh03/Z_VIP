@@ -18,7 +18,7 @@ protocol ProductDetailDisplayLogic: class {
 
 class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
     
-    var interactor: ProductDetailBusinessLogic?
+    var interactor: (ProductDetailBusinessLogic & ViewProductDetailTracking)?
     var router: (NSObjectProtocol & ProductDetailRoutingLogic & ProductDetailDataPassing)?
     var product = ProductDetail.ViewModel.init(product: ProductDetail.ViewModel.DisplayProduct(), imageList: [])
     
@@ -61,6 +61,11 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
         interactor?.fetchImageList(for: ProductDetail.Request(product: router?.dataStore?.product ?? Product()))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.trackOpenScreen()
+    }
+    
     func setupUI() {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -84,6 +89,7 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic {
         priceLabel.text = "Price: \(product.product.price)"
     }
     @IBAction func didTapProductDescriptionButton(_ sender: UIBarButtonItem) {
+        interactor?.trackTapDetailButton()
         router?.routeToProductDescription()
     }
 }

@@ -19,3 +19,9 @@ extension GeneralTracker: CatalogTracking {
         print("Tracking product tapped on catalog screen: \(product)")
     }
 }
+
+extension GeneralTracker: ProductDetailTracking {
+    func trackTapDetailButton() {
+        print("Track product description button tap")
+    }
+}
